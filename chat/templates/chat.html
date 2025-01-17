@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <style>
+        /* Simple styling for the collapsible menu */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #f4f4f4;
+            padding-top: 20px;
+            overflow: auto;
+        }
+        .sidebar a {
+            padding: 8px 8px 8px 16px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .menu-toggle {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Users</h2>
+        <div id="users-list">
+            {% for user in users %}
+                <a href="#" onclick="startChat('{{ user.id }}')">{{ user.username }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="margin-left: 260px; padding: 20px;">
+        <!-- Your chat content will go here -->
+        <h1>Welcome to the Chat Room</h1>
+    </div>
+
+    <script>
+        // Function to start a chat with the selected user
+        function startChat(userId) {
+            // Redirect to the chat page or open a new window for the chat
+            window.location.href = `/chat/${userId}/`;
+        }
+    </script>
+</body>
+</html>
